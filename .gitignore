@@ -1,0 +1,23 @@
+## LaTeX auxiliary files
+*.aux
+*.log
+*.toc
+*.out
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+## Editor / OS
+.vscode/
+Thumbs.db
+desktop.ini
+
+## Built documents
+*.pdf
+
+## Misc
+*.gz
+*.zip
+lab3.tex
