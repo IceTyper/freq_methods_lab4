@@ -32,7 +32,7 @@ for T in T_values:
     plt.plot(omega_c, 1 / np.sqrt(2), 'ro', markersize=5)
 
 # Линия уровня частоты среза (ослабление -3 дБ)
-plt.axhline(y=1/np.sqrt(2), color='gray', linestyle='--', alpha=0.7, label='Частота среза')
+plt.axhline(y=1/np.sqrt(2), color='gray', linestyle='--', alpha=0.7, label='Уровень частоты среза')
 
 # Оформление графика
 plt.xscale('log')
