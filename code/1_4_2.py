@@ -34,7 +34,7 @@ def plot_and_save_single(filename, plot_data):
     plt.tight_layout()
 
     # Сохранение
-    save_dir = r"C:\Users\fmusa\ITMOStudies\freq_methods\freq_methods_lab4\images"
+    save_dir = r"C:\Users\fmusa\ITMOStudies\freq_methods\freq_methods_lab4\images\1_4_2"
     os.makedirs(save_dir, exist_ok=True)
     filepath = os.path.join(save_dir, filename)
     plt.savefig(filepath, dpi=300)
