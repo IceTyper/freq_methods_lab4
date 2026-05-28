@@ -34,11 +34,10 @@ def create_and_save_plot(filename, data):
 
     plt.title(title, fontsize=16)
     plt.xlabel('$t$', fontsize=14) # Изменено
-    plt.ylabel('Амплитуда', fontsize=14)
     plt.grid(True, linestyle='--', alpha=0.7)
-    plt.legend(fontsize=12)
-    plt.xticks(fontsize=12)
-    plt.yticks(fontsize=12)
+    plt.legend(fontsize=14, loc='lower center')
+    plt.xticks(fontsize=14)
+    plt.yticks(fontsize=14)
     plt.tight_layout()
 
     save_dir = r"C:\Users\fmusa\ITMOStudies\freq_methods\freq_methods_lab4\images\1_4_3"

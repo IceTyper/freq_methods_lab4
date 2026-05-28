@@ -26,10 +26,9 @@ def plot_and_save_single(filename, plot_data):
     ax.plot(t, y_filt, label='Фильтрованный сигнал $y(t)$', color='green', lw=2.5)
     ax.grid(True, linestyle='--', alpha=0.7)
     # Увеличил шрифт легенды
-    ax.legend(fontsize=12) 
+    ax.legend(fontsize=14) 
     # Увеличил шрифт подписей осей
-    ax.set_ylabel('Амплитуда', fontsize=14)
-    ax.set_xlabel('Время $t$', fontsize=14)
+    ax.set_xlabel('$t$', fontsize=14)
 
     plt.tight_layout()
 
