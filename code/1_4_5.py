@@ -34,11 +34,12 @@ def create_and_save_plot(filename, data):
     
     # Принцип "Матрёшки" для наглядности
     # Слой 1: Зашумленный (широкий, полупрозрачный фон)
-    plt.plot(omega, u_hat_abs, label=r'$|\hat{u}(\omega)|$', linewidth=3.5, color='orange', alpha=0.7)
-    # Слой 2: Отфильтрованный (уже, поверх фона)
-    plt.plot(omega, y_hat_abs, label=r'$|\hat{y}(\omega)|$', linewidth=1.5, color='blue', alpha=0.8)
+    plt.plot(omega, u_hat_abs, label=r'$|\hat{u}(\omega)|$', linewidth=3.5, color='green', alpha=0.8)
     # Слой 3: Идеальный (самый узкий, контрастный, поверх всего)
-    plt.plot(omega, g_hat_abs, label=r'$|\hat{g}(\omega)|$', linewidth=2, color='green', alpha=0.3)
+    plt.plot(omega, g_hat_abs, label=r'$|\hat{g}(\omega)|$', linewidth=2, color='red', linestyle='--', alpha=1)
+    # Слой 2: Отфильтрованный (уже, поверх фона)
+    plt.plot(omega, y_hat_abs, label=r'$|\hat{y}(\omega)|$', linewidth=1.5, color='blue', alpha=0.7)
+
 
     plt.title(title, fontsize=16)
     plt.xlabel(r'$\omega$', fontsize=14)

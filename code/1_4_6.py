@@ -36,7 +36,7 @@ def create_and_save_plot(filename, data):
     # Широкая линия - теоретический результат
     plt.plot(omega, y_hat_prod_abs, label=r'$|W_1(i\omega) \cdot \hat{u}(\omega)|$', linewidth=3.5, color='blue', alpha=0.7)
     # Тонкая контрастная линия - практический результат
-    plt.plot(omega, y_hat_abs, label=r'$|\hat{y}(\omega)|$', linewidth=1.5, color='orange', alpha=0.6)
+    plt.plot(omega, y_hat_abs, label=r'$|\hat{y}(\omega)|$', linewidth=1.5, color='red', linestyle='--', alpha=1)
 
     plt.title(title, fontsize=16)
     plt.xlabel(r'$\omega$', fontsize=14)
