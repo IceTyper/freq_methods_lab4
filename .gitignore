@@ -10,7 +10,6 @@
 *.synctex.gz
 
 ## Editor / OS
-.vscode/
 Thumbs.db
 desktop.ini
 

@@ -32,13 +32,13 @@ def plot_notch_filter_afc():
         plt.plot(omega, afc, label=f'$b_1 = {b1}$', linewidth=2.5)
 
     # --- Оформление графика ---
-    plt.title(f'АЧХ режекторного фильтра при $\omega_0={omega_0}$', fontsize=16)
-    plt.xlabel(r'Частота $\omega$, рад/с', fontsize=14)
+    plt.title(f'АЧХ режекторного фильтра при $\omega_0=5$', fontsize=16)
+    plt.xlabel(r'$\omega$', fontsize=14)
     plt.ylabel(r'$|W_2(i\omega)|$', fontsize=14)
     plt.grid(True, which='both', linestyle='--', alpha=0.7)
     plt.legend(fontsize=14)
-    plt.xticks(fontsize=12)
-    plt.yticks(fontsize=12)
+    plt.xticks(fontsize=14)
+    plt.yticks(fontsize=14)
     plt.xlim(0, 15)
     plt.ylim(-0.05, 1.05)
     plt.tight_layout()

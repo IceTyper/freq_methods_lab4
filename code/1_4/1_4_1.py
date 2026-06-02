@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Директория для сохранения графиков
-output_dir = r"C:\Users\fmusa\ITMOStudies\freq_methods\freq_methods_lab4\images"
+output_dir = r"images"
 
 # Создание директории, если она ещё не существует
 if not os.path.exists(output_dir):
