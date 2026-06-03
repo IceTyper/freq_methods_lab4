@@ -33,7 +33,7 @@ def create_and_save_plot(filename, data):
     plt.xlim(t_axis[0], t_axis[-1])
     plt.tight_layout()
 
-    save_dir = r"C:\Users\fmusa\ITMOStudies\freq_methods\freq_methods_lab4\images\2_1_2"
+    save_dir = r"images\2_1_2"
     os.makedirs(save_dir, exist_ok=True)
     filepath = os.path.join(save_dir, filename)
     plt.savefig(filepath, dpi=300)
