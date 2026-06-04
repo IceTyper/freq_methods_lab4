@@ -44,7 +44,7 @@ def plot_notch_filter_afc():
     plt.tight_layout()
 
     # --- Сохранение файла ---
-    save_dir = r"images\2_1_1"
+    save_dir = r"images\2_1\2_1_1"
     os.makedirs(save_dir, exist_ok=True)
     filepath = os.path.join(save_dir, 'task_2_1_1_afc_comparison.png')
     plt.savefig(filepath, dpi=300)
