@@ -70,10 +70,13 @@ for i, params in enumerate(param_combinations):
     # 3. Фильтрация во временной области для получения y(t)
     _, y_lsim, _ = signal.lsim(W2_system, u, t_sim)
     
+    # --- Формирование динамического заголовка с параметрами ---
+    full_title = f"{title}\n" + rf"$c = {c_noise}$, $b_1 = {b1}$, $d = {d}$"
+    
     # --- Формирование имени файла ---
     filename = f'task_2_1_2_{case_name}_{i+1}_d{d}_w0{omega_0}_b1{b1}.png'
         
-    plot_data = (t, g, u, y_lsim, title)
+    plot_data = (t, g, u, y_lsim, full_title)
     create_and_save_plot(filename, plot_data)
 
 print("\nВсе графики для пункта 2.1.2 сгенерированы.")

@@ -36,7 +36,7 @@ def create_and_save_plot(filename, data):
     plt.yticks(fontsize=14)
     plt.tight_layout()
 
-    save_dir = r"images\1_4_3"
+    save_dir = r"images\1_4\1_4_3"
     os.makedirs(save_dir, exist_ok=True)
     filepath = os.path.join(save_dir, filename)
     plt.savefig(filepath, dpi=300)

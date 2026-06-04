@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Директория для сохранения графиков
-output_dir = r"images"
+output_dir = r"images\1_4"
 
 # Создание директории, если она ещё не существует
 if not os.path.exists(output_dir):
