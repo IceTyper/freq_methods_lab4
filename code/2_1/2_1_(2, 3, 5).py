@@ -85,7 +85,7 @@ def plot_notch_filter_experiment():
         # --- Левый субплот: Временная область (п. 2.1.3) ---
         axs[0].plot(t, g, label=r'Исходный $g(t)$', color='blue', lw=2, zorder=2)
         axs[0].plot(t, u, label=r'Зашумленный $u(t)$', color='orange', alpha=0.5, lw=1.5, zorder=1)
-        axs[0].plot(t, y_lsim, label=r'Фильтрованный $y(t)$', color='green', lw=2.5, zorder=3)
+        axs[0].plot(t, y_lsim, label=r'Фильтрованный $y(t)$', color='red', lw=2.5, alpha=0.7, zorder=3)
         
         axs[0].set_xlabel(r'$t$', fontsize=14)
         axs[0].set_ylabel(r'Амплитуда', fontsize=14)
@@ -99,10 +99,10 @@ def plot_notch_filter_experiment():
                     color='orange', alpha=0.5, lw=1.5, zorder=1)
         # Спектр полезного сигнала (ориентир)
         axs[1].plot(w_plot, np.abs(G_hat[mask_freq]), label=r'$|\hat{g}(\omega)|$', 
-                    color='blue', lw=2, linestyle='--', zorder=2)
+                    color='blue', lw=3, linestyle='-', alpha=0.7, zorder=2)
         # Спектр фильтрованного сигнала (результат)
         axs[1].plot(w_plot, np.abs(Y_hat_lsim[mask_freq]), label=r'$|\hat{y}(\omega)|$', 
-                    color='green', lw=2.5, linestyle='-', zorder=3)
+                    color='red', lw=2, linestyle=':', alpha=1, zorder=3)
         
         axs[1].set_xlabel(r'$\omega$', fontsize=14)
         axs[1].set_ylabel(r'Модуль Фурье-образа', fontsize=14)
