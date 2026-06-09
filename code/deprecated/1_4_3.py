@@ -1,3 +1,5 @@
+# DEPRECATED, он заменён кодом 1_4_(2, 3, 5).py
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal

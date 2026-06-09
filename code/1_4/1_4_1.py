@@ -1,51 +1,36 @@
-import os
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
-# Директория для сохранения графиков
-output_dir = r"images\1_4"
+# Расширенный репрезентативный набор значений Т для полноценного исследования
+T_values = [0.1, 0.3, 0.5, 1.0, 2.0, 5.0]
 
-# Создание директории, если она ещё не существует
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
-
-# Выбранные значения постоянной времени T
-T_values = [0.1, 0.5, 1.0, 2.0]
-
-# Расчет диапазона угловых частот \omega (логарифмическая шкала)
-omega = np.logspace(-2, 2, 1000)
+# Строго линейная сетка частот
+omega = np.linspace(0, 30, 1000)
 
 plt.figure(figsize=(10, 6))
 
-# Построение АЧХ для каждого значения T
-for T in T_values:
-    # Расчет АЧХ по формуле: |W_1(i\omega)| = 1 / sqrt(1 + (T * \omega)^2)
-    ach = 1 / np.sqrt(1 + (T * omega)**2)
-    
-    # Расчет частоты среза: \omega_c = 1 / T
-    omega_c = 1 / T
-    
-    # Построение кривой
-    plt.plot(omega, ach, label=f'T = {T}', linewidth=2)
-    
-    # Добавление точки частоты среза на уровень 1 / sqrt(2)
-    plt.plot(omega_c, 1 / np.sqrt(2), 'ro', markersize=5)
+# Различные стили линий для однозначной визуальной различимости при печати на А4
+line_styles = ['-', '--', '-.', ':', (0, (3, 1, 1, 1)), (0, (5, 5))]
 
-# Линия уровня частоты среза (ослабление -3 дБ)
-plt.axhline(y=1/np.sqrt(2), color='gray', linestyle='--', alpha=0.7, label='Уровень частоты среза')
+for i, T in enumerate(T_values):
+    A = 1 / np.sqrt(1 + (omega * T)**2)
+    plt.plot(omega, A, label=r'$T = {}$'.format(T), linewidth=2.5, linestyle=line_styles[i % len(line_styles)])
 
-# Оформление графика
-plt.xscale('log')
-plt.title('АЧХ фильтра для разных T', fontsize=14, pad=15)
-plt.xlabel('$\omega$', fontsize=12)
-plt.ylabel('$|W_1(i\omega)|$', fontsize=12)
-plt.grid(True, which="both", linestyle='--', alpha=0.6)
-plt.legend(fontsize=11, loc='lower left')
-plt.xlim(0.01, 100)
-plt.ylim(0, 1.1)
+# Возврат уровня частоты среза по ГОСТу (1/sqrt(2) ≈ 0.707)
+plt.axhline(y=1/np.sqrt(2), color='gray', linestyle='--', linewidth=1.5, label=r'Уровень частоты среза')
 
+# Оформление (без внутренних заголовков, ордината строго по методичке)
+plt.xlabel(r'$\omega$', fontsize=14)
+plt.ylabel(r'$|W_1(i\omega)|$', fontsize=14)
+plt.xticks(fontsize=14)
+plt.yticks(fontsize=14)
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.legend(fontsize=14, loc='best')
 plt.tight_layout()
 
-# Сохранение графика в соответствии с требованиями
-plt.savefig(os.path.join(output_dir, '1_4_1.png'), dpi=300, bbox_inches='tight')
+# Сохранение по относительному пути начиная с папки images
+save_dir = os.path.join("images", "1_4")
+os.makedirs(save_dir, exist_ok=True)
+plt.savefig(os.path.join(save_dir, "1_4_1.png"), dpi=300)
 plt.close()

@@ -15,8 +15,6 @@ desktop.ini
 
 ## Built documents
 *.pdf
-code/thrash/*
 ## Misc
 *.gz
 *.zip
-lab3.tex
