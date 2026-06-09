@@ -8,7 +8,7 @@
 *.fls
 *.fdb_latexmk
 *.synctex.gz
-
+*.tar
 ## Editor / OS
 Thumbs.db
 desktop.ini
