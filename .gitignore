@@ -9,6 +9,8 @@
 *.fdb_latexmk
 *.synctex.gz
 *.tar
+*.synctex(busy)
+
 ## Editor / OS
 Thumbs.db
 desktop.ini

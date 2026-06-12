@@ -39,7 +39,6 @@ def plot_and_save_verification(filename, t, y_time, y_freq, omega, y_hat_abs, y_
     y_hat_abs_shifted = fftshift(y_hat_abs)
     y_hat_prod_abs_shifted = fftshift(y_hat_prod_abs)
     
-    # Маска диапазона частот для наглядности отображения на линейной сетке
     mask = (omega_shifted >= -15) & (omega_shifted <= 15)
     
     axs[1].plot(omega_shifted[mask], y_hat_prod_abs_shifted[mask], 
@@ -68,7 +67,6 @@ u_fixed = g_fixed + noise
 save_dir_T = os.path.join("images", "1_4", "1_4_(4, 6)", "verification_T")
 
 for i, T in enumerate(T_cases):
-    # 1. Сначала рассчитываем частотную характеристику и БПФ
     omega = 2 * np.pi * fftfreq(N, dt)
     W1_freq = 1 / (1 + 1j * omega * T)
     u_hat = fft(u_fixed)
@@ -76,12 +74,11 @@ for i, T in enumerate(T_cases):
     y_hat_prod = u_hat * W1_freq
     y_fft = ifft(y_hat_prod).real
     
-    # 2. Выставляем корректное начальное условие на основе БПФ-решения
-    x0_correct = [y_fft[0]]
+    # ИСПРАВЛЕНИЕ: Выставляем честные физические начальные условия покоя
+    x0_physical = [0.0]
     
-    # 3. Моделируем во временной области через State-Space для устранения скрытого деления состояния на T
     system_ss = signal.StateSpace([[-1.0 / T]], [[1.0 / T]], [[1.0]], [[0.0]])
-    _, y_lsim, _ = signal.lsim(system_ss, u_fixed, t - t[0], X0=x0_correct)
+    _, y_lsim, _ = signal.lsim(system_ss, u_fixed, t - t[0], X0=x0_physical)
     
     y_hat = fft(y_lsim)
     
@@ -102,16 +99,14 @@ for i, a in enumerate(a_cases):
     g = np.where((t >= t1) & (t <= t2), a, 0)
     u = g + noise
     
-    # 1. Сначала рассчитываем частотную область
     u_hat = fft(u)
     y_hat_prod = u_hat * W1_freq_fixed
     y_fft = ifft(y_hat_prod).real
     
-    # 2. Корректное начальное условие для lsim
-    x0_correct = [y_fft[0]]
+    # ИСПРАВЛЕНИЕ: Выставляем честные физические начальные условия покоя
+    x0_physical = [0.0]
     
-    # 3. Временное моделирование через State-Space
-    _, y_lsim, _ = signal.lsim(system_fixed_ss, u, t - t[0], X0=x0_correct)
+    _, y_lsim, _ = signal.lsim(system_fixed_ss, u, t - t[0], X0=x0_physical)
     
     y_hat = fft(y_lsim)
     
